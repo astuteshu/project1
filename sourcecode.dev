@@ -1,8 +1,6 @@
-#include<iostream>
-#include<conio.h>
+#include<bits/stdc++.h>
 #include<windows.h>
-#include<dos.h>
-#include<time.h>
+#include<conio.h>
 #define MAXSNAKESIZE 100
 #define MAXFRAMEX 119
 #define MAXFRAMEY 29
@@ -110,7 +108,7 @@ public:
         {
             cell[i]=NULL;
         }
-        fruit.SetPoint(rand()%MAXFRAMEX,rand()%MAXFRAMEY); 
+        fruit.SetPoint(rand()%MAXFRAMEX,rand()%MAXFRAMEY);
 		state=0;
 		started=0;
     }
@@ -263,10 +261,9 @@ int main()
 			 snake.TurnLeft();break;
 			case'd':
          	case'D':
-			 snake.TurnRight();break; 			 	
+			 snake.TurnRight();break;
 		 }
 		 snake.Move();
 	}while(op!='e');
 	return 0;
 }
-
