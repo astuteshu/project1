@@ -90,7 +90,7 @@ public:
         cout<<"("<<x<<","<<y<<")";
     }
 };
-class Snake{
+class Snake:public Point{
 private:
     Point * cell[MAXSNAKESIZE];//ARRAY OF POINTS TO REPRESENT SNAKE
      int size;//current size of snake
