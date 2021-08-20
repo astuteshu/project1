@@ -1,9 +1,6 @@
-#include <iostream>
+#include<bits/stdc++.h>
 #include <conio.h>
 #include <windows.h>
-#include <dos.h>
-#include <time.h>
-
 #define MAXSNAKESIZE 100
 
 using namespace std;
@@ -24,7 +21,7 @@ class Point{
 	public:
 		Point(){
 			x = y = 10;
-		} 
+		}
 		Point(int x, int y){
 			this -> x = x;
 			this -> y = y;
@@ -73,7 +70,7 @@ class Snake{
 		Point * cell[MAXSNAKESIZE]; // array of points to represent snake
 		int size; // current size of snake
 		char dir; // current direction of snake
-		Point fruit; 
+		Point fruit;
 	public:
 		Snake(){
 			size = 1; // default size
@@ -81,7 +78,7 @@ class Snake{
 			for( int i=1; i<MAXSNAKESIZE; i++){
 				cell[i] = NULL;
 			}
-			fruit.SetPoint(rand()%50, rand()%25); 
+			fruit.SetPoint(rand()%50, rand()%25);
 		}
 		void AddCell(int x, int y){
 			cell[size++] = new Point(x,y);
@@ -101,12 +98,12 @@ class Snake{
 		void Move(){
 			// Clear screen
 			system("cls");
-			
+
 			// making snake body follow its head
 			for(int i=size-1; i>0; i--){
 				cell[i-1]->CopyPos(cell[i]);
 			}
-			
+
 			// turning snake's head
 			switch(dir){
 				case 'w':
@@ -122,20 +119,20 @@ class Snake{
 					cell[0]->MoveRight();
 					break;
 			}
-			
+
 			// Collision with fruit
 			if( fruit.GetX() == cell[0]->GetX() && fruit.GetY() == cell[0]->GetY()){
 				AddCell(0,0);
-				fruit.SetPoint(rand()%50, rand()%25); 	
+				fruit.SetPoint(rand()%50, rand()%25);
 			}
-			
+
 			//drawing snake
 			for(int i=0; i<size; i++)
 				cell[i]->Draw();
 			fruit.Draw();
-			
+
 			//Debug();
-			
+
 			Sleep(100);
 		}
 		void Debug(){
@@ -148,8 +145,8 @@ class Snake{
 int main(){
 	//random no generation
 	srand( (unsigned)time(NULL));
-	
-	// Testing snake 
+
+	// Testing snake
 	Snake snake;
 	char op = 'l';
 	do{
@@ -161,17 +158,17 @@ int main(){
 			case 'W':
 				snake.TurnUp();
 				break;
-			
+
 			case 's':
 			case 'S':
 				snake.TurnDown();
 				break;
-			
+
 			case 'a':
 			case 'A':
 				snake.TurnLeft();
 				break;
-			
+
 			case 'd':
 			case 'D':
 				snake.TurnRight();
@@ -179,7 +176,7 @@ int main(){
 		}
 		snake.Move();
 	}while(op != 'e');
-	
+
 	return 0;
 }
 
